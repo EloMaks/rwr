@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://okt2ugtvs8yv"]
+[gd_scene load_steps=11 format=3 uid="uid://okt2ugtvs8yv"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_b403y"]
+[ext_resource type="PackedScene" uid="uid://6gevd8311dwj" path="res://assets/123prawagarden_gloves_01_1k.glb" id="2_q22lj"]
+[ext_resource type="PackedScene" uid="uid://c7he2pjb11t0j" path="res://assets/123lewa_gloves_01_1k.glb" id="3_eg3e5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fcev8"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -15,11 +17,17 @@ sky = SubResource("Sky_qsa7p")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="BoxMesh" id="BoxMesh_a5j0m"]
-size = Vector3(0.1, 0.1, 0.1)
+[sub_resource type="PlaneMesh" id="PlaneMesh_dlvjd"]
+size = Vector2(20, 20)
 
-[sub_resource type="BoxMesh" id="BoxMesh_75llq"]
-size = Vector3(0.1, 0.1, 0.1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_icpsk"]
+size = Vector3(20, 0.1, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_88h60"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sp7aa"]
+size = Vector3(1, 2, 1)
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_b403y")
@@ -38,14 +46,18 @@ shadow_enabled = true
 [node name="RightController" type="XRController3D" parent="XROrigin3D"]
 tracker = &"right_hand"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/RightController"]
-mesh = SubResource("BoxMesh_a5j0m")
+[node name="HandRightRoot" type="Node3D" parent="XROrigin3D/RightController"]
+
+[node name="123prawagarden_gloves_01_1k" parent="XROrigin3D/RightController/HandRightRoot" instance=ExtResource("2_q22lj")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 
 [node name="LeftController" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/LeftController"]
-mesh = SubResource("BoxMesh_75llq")
+[node name="HandLeftRoot" type="Node3D" parent="XROrigin3D/LeftController"]
+
+[node name="123lewa_gloves_01_1k" parent="XROrigin3D/LeftController/HandLeftRoot" instance=ExtResource("3_eg3e5")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -54,3 +66,22 @@ offset_right = 8.0
 offset_bottom = 8.0
 scale = Vector2(9.80093, 11.8246)
 text = "Enter VR"
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level"]
+mesh = SubResource("PlaneMesh_dlvjd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_icpsk")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.609362)
+mesh = SubResource("BoxMesh_88h60")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/MeshInstance3D2/StaticBody3D"]
+shape = SubResource("BoxShape3D_sp7aa")
