@@ -36,8 +36,7 @@ script = ExtResource("1_b403y")
 environment = SubResource("Environment_c32fx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, 0, 0.0698669, 0)
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 
@@ -70,6 +69,7 @@ text = "Enter VR"
 [node name="Level" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000643238, -0.0160593, -0.00326414)
 mesh = SubResource("PlaneMesh_dlvjd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level/MeshInstance3D"]
