@@ -48,6 +48,7 @@ script = ExtResource("2_rwqdm")
 tracker = &"right_hand"
 
 [node name="HandRightRoot" type="Node3D" parent="XROrigin3D/RightController"]
+transform = Transform3D(-1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, 0, 0, 0)
 
 [node name="123prawagarden_gloves_01_1k" parent="XROrigin3D/RightController/HandRightRoot" instance=ExtResource("2_q22lj")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
@@ -56,6 +57,7 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 tracker = &"left_hand"
 
 [node name="HandLeftRoot" type="Node3D" parent="XROrigin3D/LeftController"]
+transform = Transform3D(-1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, 0, 0, 0)
 
 [node name="123lewa_gloves_01_1k" parent="XROrigin3D/LeftController/HandLeftRoot" instance=ExtResource("3_eg3e5")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
