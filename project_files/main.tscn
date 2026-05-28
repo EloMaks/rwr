@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://okt2ugtvs8yv"]
+[gd_scene load_steps=12 format=3 uid="uid://okt2ugtvs8yv"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_b403y"]
 [ext_resource type="PackedScene" uid="uid://6gevd8311dwj" path="res://assets/123prawagarden_gloves_01_1k.glb" id="2_q22lj"]
+[ext_resource type="Script" path="res://xr_origin_3d.gd" id="2_rwqdm"]
 [ext_resource type="PackedScene" uid="uid://c7he2pjb11t0j" path="res://assets/123lewa_gloves_01_1k.glb" id="3_eg3e5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fcev8"]
@@ -36,9 +37,10 @@ script = ExtResource("1_b403y")
 environment = SubResource("Environment_c32fx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, 0, 0.0698669, 0)
+transform = Transform3D(-0.866024, -0.433016, 0.25, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, 0.00215638, 0.0820421, 0)
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
+script = ExtResource("2_rwqdm")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
 
