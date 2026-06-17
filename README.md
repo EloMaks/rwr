@@ -4,8 +4,8 @@ Projekt zaliczeniowy stworzony w ramach przedmiotu **Media Wszechogarniające i 
 
 ## Zaimplementowane funkcjonalności
 
-* **Lokomocja:** Płynne poruszanie się po płaszczyźnie przypisane do lewego drążka (ruch w osi Y został zablokowany).
-* **Obrót (Snap Turn):** Skokowy obrót kamery o 45 stopni za pomocą prawego drążka.
+* **Lokomocja:** Płynne poruszanie się po płaszczyźnie przypisane do lewego drążka.
+* **Obrót:** Skokowy obrót kamery o 45 stopni za pomocą prawego drążka.
 * **Teleportacja:** System szybkiego przemieszczania się z wykorzystaniem promienia celowniczego.
 * **Modele dłoni:** Podpięte modele 3D śledzące ruchy kontrolerów.
 
