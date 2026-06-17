@@ -1,91 +1,35 @@
-[gd_scene load_steps=12 format=3 uid="uid://okt2ugtvs8yv"]
+[gd_scene load_steps=4 format=3 uid="uid://dlrmcd25maal2"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_b403y"]
-[ext_resource type="PackedScene" uid="uid://6gevd8311dwj" path="res://assets/123prawagarden_gloves_01_1k.glb" id="2_q22lj"]
-[ext_resource type="Script" path="res://xr_origin_3d.gd" id="2_rwqdm"]
-[ext_resource type="PackedScene" uid="uid://c7he2pjb11t0j" path="res://assets/123lewa_gloves_01_1k.glb" id="3_eg3e5"]
+[ext_resource type="Script" path="res://main_node_script.gd" id="1_ig7tw"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fcev8"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
+size = Vector3(0.1, 0.1, 0.1)
 
-[sub_resource type="Sky" id="Sky_qsa7p"]
-sky_material = SubResource("ProceduralSkyMaterial_fcev8")
-
-[sub_resource type="Environment" id="Environment_c32fx"]
-background_mode = 2
-sky = SubResource("Sky_qsa7p")
-tonemap_mode = 2
-glow_enabled = true
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_dlvjd"]
-size = Vector2(20, 20)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_icpsk"]
-size = Vector3(20, 0.1, 20)
-
-[sub_resource type="BoxMesh" id="BoxMesh_88h60"]
-size = Vector3(1, 2, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_sp7aa"]
-size = Vector3(1, 2, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_h2yge"]
+size = Vector3(0.1, 0.1, 0.1)
 
 [node name="main" type="Node3D"]
-script = ExtResource("1_b403y")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_c32fx")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866024, -0.433016, 0.25, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, 0.00215638, 0.0820421, 0)
+script = ExtResource("1_ig7tw")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
-script = ExtResource("2_rwqdm")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
-
-[node name="RightController" type="XRController3D" parent="XROrigin3D"]
-tracker = &"right_hand"
-
-[node name="HandRightRoot" type="Node3D" parent="XROrigin3D/RightController"]
-transform = Transform3D(-1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, 0, 0, 0)
-
-[node name="123prawagarden_gloves_01_1k" parent="XROrigin3D/RightController/HandRightRoot" instance=ExtResource("2_q22lj")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 
 [node name="LeftController" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"
 
-[node name="HandLeftRoot" type="Node3D" parent="XROrigin3D/LeftController"]
-transform = Transform3D(-1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, 0, 0, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/LeftController"]
+mesh = SubResource("BoxMesh_0xm2m")
 
-[node name="123lewa_gloves_01_1k" parent="XROrigin3D/LeftController/HandLeftRoot" instance=ExtResource("3_eg3e5")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+[node name="RightController" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/RightController"]
+mesh = SubResource("BoxMesh_h2yge")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Button" type="Button" parent="CanvasLayer"]
-offset_right = 8.0
-offset_bottom = 8.0
-scale = Vector2(9.80093, 11.8246)
+offset_right = 570.0
+offset_bottom = 299.0
 text = "Enter VR"
-
-[node name="Level" type="Node3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000643238, -0.0160593, -0.00326414)
-mesh = SubResource("PlaneMesh_dlvjd")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Level/MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/MeshInstance3D/StaticBody3D"]
-shape = SubResource("BoxShape3D_icpsk")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.609362)
-mesh = SubResource("BoxMesh_88h60")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Level/MeshInstance3D2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/MeshInstance3D2/StaticBody3D"]
-shape = SubResource("BoxShape3D_sp7aa")

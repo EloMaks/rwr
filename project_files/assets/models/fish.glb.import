@@ -3,13 +3,12 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://6gevd8311dwj"
-path="res://.godot/imported/123prawagarden_gloves_01_1k.glb-bc1325901aa8109db91d8393f2056ae7.scn"
+uid="uid://cy48i1u0rsnpf"
+valid=false
 
 [deps]
 
-source_file="res://assets/123prawagarden_gloves_01_1k.glb"
-dest_files=["res://.godot/imported/123prawagarden_gloves_01_1k.glb-bc1325901aa8109db91d8393f2056ae7.scn"]
+source_file="res://assets/models/fish.glb"
 
 [params]
 
@@ -31,6 +30,18 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
-gltf/naming_version=1
+_subresources={
+"meshes": {
+"fish_fish": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/models/fish_fish.res",
+"save_to_file/path": "uid://d4lw3t1f7b331"
+}
+}
+}
+gltf/naming_version=2
 gltf/embedded_image_handling=1

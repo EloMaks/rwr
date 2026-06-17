@@ -3,13 +3,12 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c7he2pjb11t0j"
-path="res://.godot/imported/123lewa_gloves_01_1k.glb-0d04bf05fbbd4973c2d2bafba1836300.scn"
+uid="uid://y2vsv55kkkx6"
+valid=false
 
 [deps]
 
-source_file="res://assets/123lewa_gloves_01_1k.glb"
-dest_files=["res://.godot/imported/123lewa_gloves_01_1k.glb-0d04bf05fbbd4973c2d2bafba1836300.scn"]
+source_file="res://assets/models/bacon.glb"
 
 [params]
 
@@ -31,6 +30,25 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
-gltf/naming_version=1
+_subresources={
+"materials": {
+"colormap": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/models/colormap.tres",
+"use_external/path": "uid://c0dbmkkghlcaj"
+}
+},
+"meshes": {
+"bacon_bacon": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/models/bacon_bacon.res",
+"save_to_file/path": "uid://b6fsistekm4hk"
+}
+}
+}
+gltf/naming_version=2
 gltf/embedded_image_handling=1

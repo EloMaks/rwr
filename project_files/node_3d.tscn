@@ -1,0 +1,152 @@
+[gd_scene load_steps=18 format=3 uid="uid://ccvxjwg6wiprf"]
+
+[ext_resource type="Script" path="res://main_node_script.gd" id="1_a202f"]
+[ext_resource type="Script" path="res://chodzenie.gd" id="2_i5arm"]
+[ext_resource type="PackedScene" uid="uid://bnn2hl6t63vni" path="res://rece/123lewa_gloves_01_1k.glb" id="3_3aqq8"]
+[ext_resource type="Script" path="res://kontroler_prawy.gd" id="5_i5arm"]
+[ext_resource type="PackedScene" uid="uid://d2qll3gjw0jep" path="res://rece/123prawagarden_gloves_01_1k.glb" id="5_je66q"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_r3fl7"]
+top_radius = 0.05
+bottom_radius = 0.005
+height = 0.15
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_r3fl7"]
+size = Vector2(20, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3fl7"]
+albedo_color = Color(0.2, 0.6, 0.2, 1)
+roughness = 0.9
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r3fl7"]
+size = Vector3(20, 0.1, 20)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r3fl7"]
+sky_top_color = Color(0.219831, 0.459242, 0.713085, 1)
+
+[sub_resource type="Sky" id="Sky_jka67"]
+sky_material = SubResource("ProceduralSkyMaterial_r3fl7")
+
+[sub_resource type="Environment" id="Environment_i5arm"]
+background_mode = 2
+background_color = Color(0.776883, 0.243971, 0.426877, 1)
+background_energy_multiplier = 0.66
+sky = SubResource("Sky_jka67")
+ambient_light_sky_contribution = 0.1
+
+[sub_resource type="BoxMesh" id="BoxMesh_i5arm"]
+size = Vector3(2, 1, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wc5p8"]
+albedo_color = Color(0.382018, 0.157818, 0.0548693, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jsk3o"]
+size = Vector3(2, 1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wc5p8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4arys"]
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_a202f")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+script = ExtResource("2_i5arm")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(0.814177, -0.0131058, 0.580469, -3.23688e-05, 0.999744, 0.0226175, -0.580617, -0.0184334, 0.813968, -0.559175, 2.16814, 2.31537)
+fov = 33.2147
+
+[node name="LeftController" type="XRController3D" parent="XROrigin3D"]
+tracker = &"left_hand"
+
+[node name="123lewa_gloves_01_1k" parent="XROrigin3D" instance=ExtResource("3_3aqq8")]
+transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, 0, 0, 0)
+
+[node name="RightController" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+show_when_tracked = true
+script = ExtResource("5_i5arm")
+
+[node name="123prawagarden_gloves_01_1k" parent="XROrigin3D/RightController" instance=ExtResource("5_je66q")]
+transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, 0, 0, 0)
+
+[node name="TeleportRay" type="RayCast3D" parent="XROrigin3D/RightController"]
+exclude_parent = false
+target_position = Vector3(0, 0, -10)
+
+[node name="TeleportMarker" type="MeshInstance3D" parent="XROrigin3D/RightController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0140901, 0.0774268, 0.0805442)
+visible = false
+mesh = SubResource("CylinderMesh_r3fl7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 311.0
+offset_top = 134.0
+offset_right = 809.0
+offset_bottom = 406.0
+text = "Enter VR"
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.003, -0.003)
+mesh = SubResource("PlaneMesh_r3fl7")
+surface_material_override/0 = SubResource("StandardMaterial3D_r3fl7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027, 0, -0.16)
+shape = SubResource("BoxShape3D_r3fl7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Level"]
+transform = Transform3D(0.995127, 0.0944882, -0.0281652, -0.0352801, 0.607989, 0.793161, 0.0920685, -0.788303, 0.60836, -3.1179, 11.4839, 8.66511)
+shadow_enabled = true
+shadow_bias = 0.396
+shadow_normal_bias = 2.693
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Level"]
+environment = SubResource("Environment_i5arm")
+
+[node name="big_pudelko2" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.10139, 0.487438, 2.6483)
+mesh = SubResource("BoxMesh_i5arm")
+surface_material_override/0 = SubResource("StandardMaterial3D_wc5p8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/big_pudelko2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/big_pudelko2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00137329, 0, -0.0147705)
+shape = SubResource("BoxShape3D_jsk3o")
+
+[node name="big_pudelko1" type="MeshInstance3D" parent="Level/big_pudelko2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.26167, 0.0384908, -6.12834)
+mesh = SubResource("BoxMesh_i5arm")
+surface_material_override/0 = SubResource("StandardMaterial3D_wc5p8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/big_pudelko2/big_pudelko1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/big_pudelko2/big_pudelko1/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00137329, 0, -0.0147705)
+shape = SubResource("BoxShape3D_jsk3o")
+
+[node name="pudlo1" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25762, 0.738212, -4.99109)
+mesh = SubResource("BoxMesh_wc5p8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/pudlo1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/pudlo1/StaticBody3D"]
+shape = SubResource("BoxShape3D_4arys")
+
+[node name="pudlo2" type="MeshInstance3D" parent="Level/pudlo1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1391, -0.0412607, 7.31208)
+mesh = SubResource("BoxMesh_wc5p8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/pudlo1/pudlo2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/pudlo1/pudlo2/StaticBody3D"]
+shape = SubResource("BoxShape3D_4arys")

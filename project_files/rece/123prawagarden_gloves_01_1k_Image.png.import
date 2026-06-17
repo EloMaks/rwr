@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6xb0ra5xekp6"
-path.s3tc="res://.godot/imported/123lewa_gloves_01_1k_Image.png-dbb707a1119c2d511a2e70eba2c46da0.s3tc.ctex"
+uid="uid://bpd0hlm2k4upp"
+path.s3tc="res://.godot/imported/123prawagarden_gloves_01_1k_Image.png-1d03d45719697124650d6060d1c31cbc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/123lewa_gloves_01_1k_Image.png"
-dest_files=["res://.godot/imported/123lewa_gloves_01_1k_Image.png-dbb707a1119c2d511a2e70eba2c46da0.s3tc.ctex"]
+source_file="res://rece/123prawagarden_gloves_01_1k_Image.png"
+dest_files=["res://.godot/imported/123prawagarden_gloves_01_1k_Image.png-1d03d45719697124650d6060d1c31cbc.s3tc.ctex"]
 
 [params]
 

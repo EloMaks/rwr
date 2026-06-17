@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bku0u5814ij53"
-path.s3tc="res://.godot/imported/123prawagarden_gloves_01_1k_Image.png-4cd2af26861dc04c65f421b55b888453.s3tc.ctex"
+uid="uid://ds1122jkhkbl8"
+path.s3tc="res://.godot/imported/colormap.png-8189f3c9e30f86aaa136872b6ce58318.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "8597d4e7e65352a302b63e07bc01a7da"
-}
 
 [deps]
 
-source_file="res://assets/123prawagarden_gloves_01_1k_Image.png"
-dest_files=["res://.godot/imported/123prawagarden_gloves_01_1k_Image.png-4cd2af26861dc04c65f421b55b888453.s3tc.ctex"]
+source_file="res://assets/models/Textures/colormap.png"
+dest_files=["res://.godot/imported/colormap.png-8189f3c9e30f86aaa136872b6ce58318.s3tc.ctex"]
 
 [params]
 

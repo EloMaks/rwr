@@ -10,11 +10,21 @@ config_version=5
 
 [application]
 
-config/name="123New Game Project"
-run/main_scene="res://main.tscn"
+config/name="MWiWR Projekt"
+run/main_scene="res://node_3d.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/bg_color=Color(0.248838, 0.0474851, 0.18072, 1)
 config/icon="res://icon.svg"
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"
 
 [xr]
 
+openxr/enabled=true
 shaders/enabled=true
